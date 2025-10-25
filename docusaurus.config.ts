@@ -8,10 +8,10 @@ const config: Config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://tududi.github.io',
+  url: 'https://docs.tududi.com',
   // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, this is usually '/<projectName>/'
-  baseUrl: '/tududi-docs/',
+  // For custom domains, use '/'
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   organizationName: 'tududi', // GitHub org/user name.
