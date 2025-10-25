@@ -4,7 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Tududi',
-  tagline: 'Self-hosted task management with hierarchical organization',
+  tagline: 'Self-hosted task management that puts you in control',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -14,7 +14,7 @@ const config: Config = {
   baseUrl: '/',
 
   // GitHub pages deployment config.
-  organizationName: 'tududi', // GitHub org/user name.
+  organizationName: 'chrisvel', // GitHub org/user name.
   projectName: 'tududi-docs', // GitHub repo name.
   deploymentBranch: 'gh-pages', // Branch that GitHub Pages will deploy from
   trailingSlash: false,
@@ -42,7 +42,7 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           // Link to edit documentation on GitHub
           editUrl:
-            'https://github.com/tududi/tududi-docs/tree/main/',
+            'https://github.com/chrisvel/tududi-docs/tree/master/',
         },
         blog: {
           showReadingTime: true,
@@ -52,7 +52,7 @@ const config: Config = {
           },
           // Link to edit blog posts on GitHub
           editUrl:
-            'https://github.com/tududi/tududi-docs/tree/main/',
+            'https://github.com/chrisvel/tududi-docs/tree/master/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -79,13 +79,8 @@ const config: Config = {
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/tududi/tududi-docs',
-          label: 'Docs GitHub',
-          position: 'right',
-        },
-        {
-          href: 'https://github.com/tududi/tududi',
-          label: 'Main Repo',
+          href: 'https://github.com/chrisvel/tududi',
+          label: 'GitHub',
           position: 'right',
         },
       ],
@@ -110,8 +105,16 @@ const config: Config = {
           title: 'Community',
           items: [
             {
-              label: 'GitHub Discussions',
-              href: 'https://github.com/tududi/tududi/discussions',
+              label: 'Discord',
+              href: 'https://discord.gg/fkbeJ9CmcH',
+            },
+            {
+              label: 'Reddit',
+              href: 'https://www.reddit.com/r/tududi/',
+            },
+            {
+              label: 'GitHub',
+              href: 'https://github.com/chrisvel/tududi',
             },
           ],
         },
@@ -123,13 +126,13 @@ const config: Config = {
               to: '/blog',
             },
             {
-              label: 'GitHub',
-              href: 'https://github.com/tududi/tududi',
+              label: 'Docker Hub',
+              href: 'https://hub.docker.com/r/chrisvel/tududi',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Tududi. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Tududi by Chris Veleris. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
