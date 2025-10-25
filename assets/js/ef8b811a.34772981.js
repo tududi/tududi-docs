@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunktududi_docs=globalThis.webpackChunktududi_docs||[]).push([[947],{6600:u=>{u.exports=JSON.parse('{"authors":[{"name":"Tududi Team","title":"Tududi Development Team","url":"https://github.com/tududi/tududi","imageURL":"https://github.com/tududi.png","key":"tududi-team","page":null,"count":1}]}')}}]);

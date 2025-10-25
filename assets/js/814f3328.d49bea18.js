@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunktududi_docs=globalThis.webpackChunktududi_docs||[]).push([[472],{5513:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Welcome to Tududi Documentation","permalink":"/blog/welcome","unlisted":false,"date":"2025-10-25T00:00:00.000Z"}]}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunktududi_docs=globalThis.webpackChunktududi_docs||[]).push([[121],{8070:n=>{n.exports=JSON.parse('{"tags":[{"label":"tududi","permalink":"/blog/tags/tududi","count":1},{"label":"announcement","permalink":"/blog/tags/announcement","count":1},{"label":"documentation","permalink":"/blog/tags/documentation","count":1}]}')}}]);
