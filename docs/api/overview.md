@@ -298,6 +298,6 @@ const tasks = await client.tasks.list({
 
 ## Next Steps
 
-- [Authentication API](/docs/api/authentication) - Detailed auth documentation
-- [Tasks API](/docs/api/tasks) - Complete tasks endpoint reference
-- [Users API](/docs/api/users) - User management endpoints
+- [Authentication API](/api/authentication) - Detailed auth documentation
+- [Tasks API](/api/tasks) - Complete tasks endpoint reference
+- [Users API](/api/users) - User management endpoints

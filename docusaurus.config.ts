@@ -40,24 +40,13 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
+          // Make docs the homepage
+          routeBasePath: '/',
           // Link to edit documentation on GitHub
           editUrl:
             'https://github.com/tududi/tududi-docs/tree/master/',
         },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Link to edit blog posts on GitHub
-          editUrl:
-            'https://github.com/tududi/tududi-docs/tree/master/',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
+        blog: false, // Disable blog
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -77,7 +66,6 @@ const config: Config = {
           position: 'left',
           label: 'Documentation',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/chrisvel/tududi',
           label: 'GitHub',
@@ -93,11 +81,11 @@ const config: Config = {
           items: [
             {
               label: 'Getting Started',
-              to: '/docs/intro',
+              to: '/',
             },
             {
               label: 'Installation',
-              to: '/docs/getting-started/installation',
+              to: '/getting-started/installation',
             },
           ],
         },
@@ -122,17 +110,13 @@ const config: Config = {
           title: 'More',
           items: [
             {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
               label: 'Docker Hub',
               href: 'https://hub.docker.com/r/chrisvel/tududi',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Tududi by Chris Veleris. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} tududi`,
     },
     prism: {
       theme: prismThemes.github,

@@ -294,6 +294,6 @@ Review today's tasks
 
 ## Next Steps
 
-- [Task Management](/docs/features/task-management) - Learn advanced task features
-- [API Reference](/docs/api/overview) - Integrate with the API
-- [Guides](/docs/guides/docker-deployment) - Deploy Tududi
+- [Task Management](/features/task-management) - Learn advanced task features
+- [API Reference](/api/overview) - Integrate with the API
+- [Guides](/guides/docker-deployment) - Deploy Tududi

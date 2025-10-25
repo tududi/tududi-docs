@@ -141,6 +141,6 @@ sqlite3 tududi.db "VACUUM;"
 
 ## Next Steps
 
-- [First Steps](/docs/getting-started/first-steps) - Start using Tududi
-- [Docker Deployment](/docs/guides/docker-deployment) - Deploy with Docker
-- [Backup & Restore](/docs/guides/backup-restore) - Backup your data
+- [First Steps](/getting-started/first-steps) - Start using Tududi
+- [Docker Deployment](/guides/docker-deployment) - Deploy with Docker
+- [Backup & Restore](/guides/backup-restore) - Backup your data

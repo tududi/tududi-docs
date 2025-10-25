@@ -371,5 +371,5 @@ if (response.ok) {
 
 ## Next Steps
 
-- [Authentication API](/docs/api/authentication) - User authentication
-- [Tasks API](/docs/api/tasks) - Task management
+- [Authentication API](/api/authentication) - User authentication
+- [Tasks API](/api/tasks) - Task management

@@ -162,5 +162,5 @@ psql -U tududi_user -d tududi -c "VACUUM ANALYZE;"
 
 ## Next Steps
 
-- [Backup & Restore](/docs/guides/backup-restore) - Backup strategies
-- [Docker Deployment](/docs/guides/docker-deployment) - Deploy with Docker
+- [Backup & Restore](/guides/backup-restore) - Backup strategies
+- [Docker Deployment](/guides/docker-deployment) - Deploy with Docker

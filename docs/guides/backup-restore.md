@@ -181,5 +181,5 @@ Regularly test your backups:
 
 ## Next Steps
 
-- [Database Setup](/docs/guides/database-setup) - Database configuration
-- [Docker Deployment](/docs/guides/docker-deployment) - Deploy with Docker
+- [Database Setup](/guides/database-setup) - Database configuration
+- [Docker Deployment](/guides/docker-deployment) - Deploy with Docker

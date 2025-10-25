@@ -241,5 +241,5 @@ See [Contributing Guide](https://github.com/tududi/tududi/blob/main/CONTRIBUTING
 
 ## Next Steps
 
-- [Telegram Integration](/docs/features/telegram-integration) - Use Tududi via Telegram
-- [API Reference](/docs/api/overview) - Integrate with Tududi
+- [Telegram Integration](/features/telegram-integration) - Use Tududi via Telegram
+- [API Reference](/api/overview) - Integrate with Tududi

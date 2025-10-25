@@ -222,6 +222,6 @@ Create project templates for recurring work:
 
 ## Next Steps
 
-- [Task Management](/docs/features/task-management) - Master task management
-- [Multi-language Support](/docs/features/multi-language) - Work in any language
-- [API Reference](/docs/api/overview) - Automate with the API
+- [Task Management](/features/task-management) - Master task management
+- [Multi-language Support](/features/multi-language) - Work in any language
+- [API Reference](/api/overview) - Automate with the API

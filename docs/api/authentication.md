@@ -264,5 +264,5 @@ session.post('http://localhost:3000/api/auth/logout')
 
 ## Next Steps
 
-- [Tasks API](/docs/api/tasks) - Manage tasks via API
-- [Users API](/docs/api/users) - User management
+- [Tasks API](/api/tasks) - Manage tasks via API
+- [Users API](/api/users) - User management

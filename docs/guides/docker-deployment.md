@@ -361,5 +361,5 @@ echo "Update complete!"
 
 ## Next Steps
 
-- [Database Setup](/docs/guides/database-setup) - Configure your database
-- [Backup & Restore](/docs/guides/backup-restore) - Backup strategies
+- [Database Setup](/guides/database-setup) - Configure your database
+- [Backup & Restore](/guides/backup-restore) - Backup strategies

@@ -100,9 +100,9 @@ You should see the Tududi login page.
 
 ## Next Steps
 
-- [Configuration](/docs/getting-started/configuration) - Configure your Tududi instance
-- [First Steps](/docs/getting-started/first-steps) - Create your first task
-- [Docker Deployment](/docs/guides/docker-deployment) - Deploy with Docker
+- [Configuration](/getting-started/configuration) - Configure your Tududi instance
+- [First Steps](/getting-started/first-steps) - Create your first task
+- [Docker Deployment](/guides/docker-deployment) - Deploy with Docker
 
 ## Troubleshooting
 

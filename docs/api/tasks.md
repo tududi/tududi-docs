@@ -371,5 +371,5 @@ for (const title of subtasks) {
 
 ## Next Steps
 
-- [Users API](/docs/api/users) - User management
-- [Authentication](/docs/api/authentication) - API authentication
+- [Users API](/api/users) - User management
+- [Authentication](/api/authentication) - API authentication

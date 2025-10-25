@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+slug: /
 ---
 
 # Introduction
@@ -48,7 +49,7 @@ npm install
 npm start
 ```
 
-Visit [Installation](/docs/getting-started/installation) for detailed setup instructions.
+Visit [Installation](/getting-started/installation) for detailed setup instructions.
 
 ## Architecture
 

@@ -191,6 +191,6 @@ Configure notification preferences:
 
 ## Next Steps
 
-- [Hierarchical Organization](/docs/features/hierarchical-organization) - Organize tasks in projects
-- [Multi-language Support](/docs/features/multi-language) - Use Tududi in your language
-- [Telegram Integration](/docs/features/telegram-integration) - Manage tasks via Telegram
+- [Hierarchical Organization](/features/hierarchical-organization) - Organize tasks in projects
+- [Multi-language Support](/features/multi-language) - Use Tududi in your language
+- [Telegram Integration](/features/telegram-integration) - Manage tasks via Telegram

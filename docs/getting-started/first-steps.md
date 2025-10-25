@@ -142,9 +142,9 @@ Import tasks from other tools:
 
 ## Next Steps
 
-- [Task Management Features](/docs/features/task-management) - Learn advanced task management
-- [Hierarchical Organization](/docs/features/hierarchical-organization) - Master project organization
-- [Telegram Integration](/docs/features/telegram-integration) - Use Tududi via Telegram
+- [Task Management Features](/features/task-management) - Learn advanced task management
+- [Hierarchical Organization](/features/hierarchical-organization) - Master project organization
+- [Telegram Integration](/features/telegram-integration) - Use Tududi via Telegram
 
 ## Need Help?
 
