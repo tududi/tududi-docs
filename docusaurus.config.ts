@@ -14,7 +14,7 @@ const config: Config = {
   baseUrl: '/',
 
   // GitHub pages deployment config.
-  organizationName: 'chrisvel', // GitHub org/user name.
+  organizationName: 'tududi', // GitHub org/user name.
   projectName: 'tududi-docs', // GitHub repo name.
   deploymentBranch: 'gh-pages', // Branch that GitHub Pages will deploy from
   trailingSlash: false,
@@ -42,7 +42,7 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           // Link to edit documentation on GitHub
           editUrl:
-            'https://github.com/chrisvel/tududi-docs/tree/master/',
+            'https://github.com/tududi/tududi-docs/tree/master/',
         },
         blog: {
           showReadingTime: true,
@@ -52,7 +52,7 @@ const config: Config = {
           },
           // Link to edit blog posts on GitHub
           editUrl:
-            'https://github.com/chrisvel/tududi-docs/tree/master/',
+            'https://github.com/tududi/tududi-docs/tree/master/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
