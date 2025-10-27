@@ -3,7 +3,7 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'Tududi',
+  title: 'tududi',
   tagline: 'Self-hosted task management that puts you in control',
   favicon: 'img/favicon.ico',
 
@@ -58,7 +58,7 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/tududi-social-card.jpg',
     navbar: {
-      title: 'Tududi',
+      title: 'tududi',
       items: [
         {
           type: 'docSidebar',

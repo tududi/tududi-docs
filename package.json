@@ -1,7 +1,7 @@
 {
   "name": "tududi-docs",
   "version": "1.0.0",
-  "description": "Documentation for Tududi - Self-hosted task management",
+  "description": "Documentation for tududi - Self-hosted task management",
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
@@ -19,7 +19,7 @@
     "task-management",
     "docusaurus"
   ],
-  "author": "Tududi Team",
+  "author": "tududi Team",
   "license": "ISC",
   "dependencies": {
     "@docusaurus/core": "^3.9.2",

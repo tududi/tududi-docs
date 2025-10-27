@@ -1,6 +1,6 @@
-# Tududi Documentation
+# tududi Documentation
 
-This repository contains the official documentation for [Tududi](https://tududi.com) - a self-hosted task management application with hierarchical organization, multi-language support, and Telegram integration.
+This repository contains the official documentation for [tududi](https://tududi.com) - a self-hosted task management application with hierarchical organization, multi-language support, and Telegram integration.
 
 ## Built With
 
@@ -168,6 +168,6 @@ npm run build
 
 ## Links
 
-- [Tududi Main Repository](https://github.com/tududi/tududi)
+- [tududi Main Repository](https://github.com/tududi/tududi)
 - [Documentation Site](https://tududi.github.io/tududi-docs/)
 - [Issue Tracker](https://github.com/tududi/tududi/issues)
