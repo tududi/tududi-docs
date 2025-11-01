@@ -16,7 +16,7 @@ Before creating a feature request, please:
    - Check the [Roadmap](https://github.com/users/chrisvel/projects/2) for planned features
 
 2. **Check the documentation** - Feature might already exist
-   - Browse the [documentation](/intro)
+   - Browse the [documentation](/)
    - Try the search function (Ctrl/Cmd + K)
    - Ask in [Discord](https://discord.gg/fkbeJ9CmcH) if unsure
 
