@@ -21,6 +21,15 @@ const sidebars: SidebarsConfig = {
         'features/telegram-integration',
       ],
     },
+    {
+      type: 'category',
+      label: 'Community',
+      items: [
+        'community/contributing',
+        'community/bug-reports',
+        'community/feature-requests',
+      ],
+    },
   ],
 };
 
