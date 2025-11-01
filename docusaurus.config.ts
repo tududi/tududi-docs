@@ -62,7 +62,12 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/tududi-social-card.jpg',
     navbar: {
-      title: 'tududi',
+      logo: {
+        alt: 'tududi',
+        src: 'img/wide-logo-dark.png',
+        srcDark: 'img/wide-logo-light.png',
+        height: 32,
+      },
       items: [
         {
           type: 'docSidebar',
