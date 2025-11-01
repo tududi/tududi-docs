@@ -28,6 +28,7 @@ const sidebars: SidebarsConfig = {
         'community/contributing',
         'community/bug-reports',
         'community/feature-requests',
+        'community/code-of-conduct',
       ],
     },
   ],
