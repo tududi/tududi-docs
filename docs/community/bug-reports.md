@@ -191,10 +191,10 @@ User permission changes to read-write after refresh.
 [Screenshot 2: After refresh showing read-write]
 
 ## Console Logs
-```
+```text
 GET /api/projects/123/shares 200 OK
-Response: { "shares": [{ "email": "user@example.com", "permission": 2 }] }
-// permission: 2 should be 1 for read-only
+Response: shares array with email and permission level 2
+Note: permission 2 should be 1 for read-only
 ```
 
 ## Additional Context
