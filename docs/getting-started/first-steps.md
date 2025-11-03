@@ -526,7 +526,6 @@ Now that you're familiar with the basics, explore:
 
 - **[Project Sharing](/features/project-sharing)** - Detailed collaboration guide
 - **[Telegram Integration](/features/telegram-integration)** - Advanced capture workflows
-- **[Hierarchical Organization](/features/hierarchical-organization)** - Advanced organization techniques
 
 ## Get Help
 

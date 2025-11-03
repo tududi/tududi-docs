@@ -428,4 +428,3 @@ ls -ln ~/tududi_db
 
 - **[First Steps](/getting-started/first-steps)** - Start using tududi
 - **[Telegram Integration](/features/telegram-integration)** - Set up quick capture
-- **[Docker Deployment](/guides/docker-deployment)** - Advanced deployment options
