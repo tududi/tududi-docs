@@ -72,7 +72,8 @@ npm run frontend:lint
 ```
 
 ### Translations
-Add or improve translations in `frontend/locales/[language]/`
+Add or improve translations in `public/locales/[language]/` 
+https://github.com/chrisvel/tududi/tree/main/public/locales
 
 ## Security Issues
 
