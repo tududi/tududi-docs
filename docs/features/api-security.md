@@ -399,4 +399,4 @@ Before deploying to production:
 
 - [Configuration Guide](../getting-started/configuration.md)
 - [API Reference](https://your-domain.com/api) (when Swagger enabled)
-- [Environment Variables](.env.example)
+- [Environment Variables](../getting-started/configuration.md#environment-variables)
