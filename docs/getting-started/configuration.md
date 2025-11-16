@@ -65,11 +65,11 @@ These variables customize tududi's behavior:
   - **Specific domains**: Production with reverse proxy
   - **Empty string**: Development with external access (insecure)
 
-#### `PUID` / `GUID`
+#### `PUID` / `PGID`
 - **Description**: User ID and Group ID to run the container process as
 - **Required**: No
 - **Default**: 1001/1001
-- **Example**: `PUID=1000 GUID=1000`
+- **Example**: `PUID=1000 PGID=1000`
 - **When to Use**:
   - Match file permissions with your host system user
   - Running Docker as non-root user
@@ -208,7 +208,7 @@ docker run \
   -e TUDUDI_SESSION_SECRET=$(openssl rand -hex 64) \
   -e TUDUDI_ALLOWED_ORIGINS=https://tududi.yourdomain.com \
   -e PUID=1000 \
-  -e GUID=1000 \
+  -e PGID=1000 \
   -v /data/tududi/db:/app/backend/db \
   -v /data/tududi/uploads:/app/backend/uploads \
   -p 127.0.0.1:3002:3002 \
@@ -277,7 +277,7 @@ services:
       - TUDUDI_SESSION_SECRET=your-generated-secret-here
       - TUDUDI_ALLOWED_ORIGINS=https://tududi.yourdomain.com
       - PUID=1000
-      - GUID=1000
+      - PGID=1000
     volumes:
       - ./tududi_db:/app/backend/db
       - ./tududi_uploads:/app/backend/uploads
@@ -325,7 +325,7 @@ docker-compose up -d
 
 ### File Permissions
 - Ensure database and upload volumes are not world-readable
-- Use appropriate PUID/GUID for your environment
+- Use appropriate PUID/PGID for your environment
 - Restrict access to `.env` files (`chmod 600 .env`)
 
 ### Reverse Proxy
@@ -362,7 +362,7 @@ For full instructions, visit [Telegram Integration](/features/telegram-integrati
 | `TUDUDI_SESSION_SECRET` | Yes | - | Session encryption key |
 | `TUDUDI_ALLOWED_ORIGINS` | No | `localhost:*` | CORS allowed origins |
 | `PUID` | No | 1001 | Container user ID |
-| `GUID` | No | 1001 | Container group ID |
+| `PGID` | No | 1001 | Container group ID |
 | `DB_FILE` | No | `backend/db/production.sqlite3` | Database file path |
 | `TUDUDI_UPLOAD_PATH` | No | `backend/uploads/` | Upload directory |
 
@@ -398,13 +398,13 @@ TUDUDI_ALLOWED_ORIGINS=https://tududi.com:8443
 
 **Problem**: Database or uploads not accessible
 
-**Solution**: Set correct PUID/GUID:
+**Solution**: Set correct PUID/PGID:
 ```bash
 # On host, check ownership of volume directories
 ls -ln ~/tududi_db
 
-# Set matching PUID/GUID in Docker run command
--e PUID=1000 -e GUID=1000
+# Set matching PUID/PGID in Docker run command
+-e PUID=1000 -e PGID=1000
 ```
 
 ### Can't Access on Network
