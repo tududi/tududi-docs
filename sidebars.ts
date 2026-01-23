@@ -17,8 +17,8 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Features',
       items: [
-        'features/api-security',
         'features/api-access',
+        'features/api-security',
         'features/project-sharing',
         'features/telegram-integration',
       ],
