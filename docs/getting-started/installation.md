@@ -46,20 +46,27 @@ This installs all packages for both frontend and backend.
 
 ### 3. Configure Environment Variables
 
-Create a `.env` file in the `backend/` directory:
+Copy the example env file, then adjust values for local development:
 
 ```bash
+# From repo root
+cp backend/.env.example backend/.env
+
 # backend/.env
-TUDUDI_USER_EMAIL=dev@example.com
+NODE_ENV=development
+TUDUDI_USER_EMAIL=test@tududi.com
 TUDUDI_USER_PASSWORD=password123
 TUDUDI_SESSION_SECRET=$(openssl rand -hex 64)
 ```
 
+Keep `NODE_ENV=development` for local development to avoid production defaults.
+
 Or export them directly:
 
 ```bash
+export NODE_ENV=development
 export TUDUDI_SESSION_SECRET=$(openssl rand -hex 64)
-export TUDUDI_USER_EMAIL=dev@example.com
+export TUDUDI_USER_EMAIL=test@tududi.com
 export TUDUDI_USER_PASSWORD=password123
 ```
 
@@ -79,7 +86,7 @@ You need **two terminal windows**:
 ```bash
 npm run backend:dev
 ```
-Runs on `http://localhost:3001`
+Runs on `http://localhost:3002`
 
 **Terminal 2 - Frontend:**
 ```bash
@@ -95,7 +102,7 @@ http://localhost:8080
 ```
 
 Log in with:
-- Email: `dev@example.com`
+- Email: `test@tududi.com`
 - Password: `password123`
 
 ---
@@ -127,7 +134,7 @@ npm run migration:create     # Create new migration
 | Component | Port | URL |
 |-----------|------|-----|
 | Frontend (dev) | 8080 | http://localhost:8080 |
-| Backend API | 3001 | http://localhost:3001 |
+| Backend API | 3002 | http://localhost:3002 |
 | Docker (production) | 3002 | http://localhost:3002 |
 
 The webpack dev server proxies API calls to the backend automatically.
@@ -212,8 +219,8 @@ npm run migration:undo
 ### Port Already in Use
 
 ```bash
-# Find and kill process using port 3001 or 8080
-lsof -i :3001
+# Find and kill process using port 3002 or 8080
+lsof -i :3002
 kill -9 <PID>
 ```
 

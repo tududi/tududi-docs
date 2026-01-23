@@ -104,21 +104,22 @@ Perfect for testing and development on your local machine:
 
 ```bash
 # Minimal setup - defaults work great for local dev
-export TUDUDI_USER_EMAIL=dev@example.com
+export TUDUDI_USER_EMAIL=test@tududi.com
 export TUDUDI_USER_PASSWORD=password123
 export TUDUDI_SESSION_SECRET=$(openssl rand -hex 64)
+export NODE_ENV=development
 
 # TUDUDI_ALLOWED_ORIGINS not needed - defaults to localhost
 ```
 
 **What This Does:**
-- Creates admin user `dev@example.com`
-- Allows access from `localhost:8080` and `localhost:3001`
+- Creates admin user `test@tududi.com`
+- Allows access from `localhost:8080` and `localhost:3002`
 - Stores data in project directory
 
 **Access At:**
 - Frontend: `http://localhost:8080`
-- Backend API: `http://localhost:3001`
+- Backend API: `http://localhost:3002`
 
 ---
 

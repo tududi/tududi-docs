@@ -19,6 +19,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'features/project-sharing',
         'features/telegram-integration',
+        'features/api-security',
       ],
     },
     {

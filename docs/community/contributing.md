@@ -17,9 +17,8 @@ Thank you for your interest in contributing to tududi!
 2. **Set Up Environment**
    ```bash
    npm install
-   export TUDUDI_SESSION_SECRET=$(openssl rand -hex 64)
-   export TUDUDI_USER_EMAIL=dev@example.com
-   export TUDUDI_USER_PASSWORD=password123
+   cp backend/.env.example backend/.env
+   # Edit backend/.env to set NODE_ENV=development and credentials
    npm run db:init
    ```
 
@@ -28,6 +27,7 @@ Thank you for your interest in contributing to tududi!
    npm run backend:dev    # Terminal 1
    npm run frontend:dev   # Terminal 2
    ```
+   Log in with the credentials from `backend/.env` (default `test@tududi.com` / `password123`).
 
 4. **Create Branch & Make Changes**
    ```bash
