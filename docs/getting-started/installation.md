@@ -78,7 +78,14 @@ npm run db:init
 
 This creates the SQLite database and all necessary tables.
 
-### 5. Start Development Servers
+### 5. Create user
+
+```bash
+npm run user:create test@tududi.com password123 true
+```
+
+
+### 6. Start Development Servers
 
 You need **two terminal windows**:
 
@@ -94,7 +101,7 @@ npm run frontend:dev
 ```
 Runs on `http://localhost:8080`
 
-### 6. Open tududi
+### 7. Open tududi
 
 Navigate to:
 ```
@@ -127,6 +134,9 @@ npm run db:init              # Create database and tables
 npm run db:reset             # Reset database (deletes all data!)
 npm run db:migrate           # Run pending migrations
 npm run migration:create     # Create new migration
+
+# User
+npm run user:create          # Creates a user with username password bool for admin role.
 ```
 
 ### Port Reference
