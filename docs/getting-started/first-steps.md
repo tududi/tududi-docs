@@ -144,10 +144,10 @@ Tags provide flexible, cross-cutting organization. Use them for contexts, priori
 
 ### Tag Ideas
 
-- **Contexts**: `@home`, `@office`, `@phone`, `@computer`
-- **Energy Levels**: `#quick-win`, `#deep-work`, `#low-energy`
-- **Categories**: `#urgent`, `#important`, `#research`, `#creative`
-- **Time-based**: `#morning`, `#evening`, `#weekend`
+- **Contexts**: `home`, `office`, `phone`, `computer`
+- **Energy Levels**: `quick-win`, `deep-work`, `low-energy`
+- **Categories**: `urgent`, `important`, `research`, `creative`
+- **Time-based**: `morning`, `evening`, `weekend`
 
 ### Adding Tags
 
@@ -194,7 +194,7 @@ Pinned views appear in your sidebar for instant access.
 **Common View Examples:**
 - "Today - Work Only" - Today's tasks filtered by work area
 - "High Priority Upcoming" - Upcoming tasks with priority 2
-- "Quick Wins" - Tasks tagged `#quick-win`
+- "Quick Wins" - Tasks tagged `quick-win`
 - "Waiting For" - Tasks in status 3 (review/blocked)
 
 ---
@@ -427,8 +427,8 @@ Add more only when genuinely needed.
 
 ### Tag Sparingly
 Tags are powerful but can become overwhelming. Start with a few essential tags:
-- Context tags (`@home`, `@office`)
-- Energy tags (`#quick-win`, `#deep-work`)
+- Context tags (`home`, `office`)
+- Energy tags (`quick-win`, `deep-work`)
 
 Add more tags only when you find yourself repeatedly filtering for something.
 
