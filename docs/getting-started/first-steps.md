@@ -23,10 +23,9 @@ Once logged in, you'll see the main task view. Let's explore!
 
 The left sidebar contains your main navigation:
 
-- **Today** - Tasks due today or overdue
-- **Upcoming** - Tasks with future due dates
-- **Someday** - Tasks without due dates (your backlog)
-- **Inbox** - Items captured from Telegram awaiting processing
+- **Today** - Your main dashboard with 4 sections: Overdue, Planned, Suggested, and Completed tasks
+- **Upcoming** - 7-day view of tasks with future due dates
+- **Inbox** - Quick capture area for items awaiting processing (from Telegram or web)
 - **Projects** - All your projects
 - **Areas** - High-level life/work categories
 - **Notes** - Standalone notes and documentation
@@ -40,6 +39,41 @@ The left sidebar contains your main navigation:
 
 ---
 
+## Understanding the Today Page
+
+The Today page is your main dashboard, divided into **four intelligent sections**:
+
+### 1. Overdue Section
+Tasks past their due date that need attention. A task appears here if:
+- Due date is before today
+- Not already in the Planned section
+- Not completed or cancelled
+
+### 2. Planned Section
+Tasks you're actively working on today. Shows tasks with these statuses:
+- **In Progress** - Tasks you're actively working on
+- **Planned** - Tasks you scheduled to work on
+- **Waiting** - Tasks blocked or waiting for something
+
+**Important**: Status matters, not just the due date! A task marked "Planned" appears here even without a due date.
+
+### 3. Suggested Section
+Up to 10 tasks automatically recommended for you to work on next, based on:
+- Priority (high-priority tasks first)
+- Due dates (time-sensitive work)
+- Project associations
+- Excludes tasks already in other sections
+
+This section is hidden by default but can be enabled in Today Settings.
+
+### 4. Completed Section
+Tasks you finished today, sorted by completion time (most recent first). Includes:
+- Regular tasks marked as "Done" today
+- Recurring tasks completed today
+- Weekly completion trend chart
+
+---
+
 ## Creating Your First Task
 
 The most basic action in tududi is creating a task.
@@ -50,7 +84,7 @@ The most basic action in tududi is creating a task.
 2. Enter a task name, for example: "Buy groceries"
 3. Press **Enter** to create
 
-That's it! Your task is now in the "Someday" view.
+That's it! Your task is created. Without a due date, it won't appear in Today or Upcoming views until you schedule it.
 
 ### Adding Task Details
 
@@ -61,15 +95,16 @@ Click on a task to expand its details panel:
 - **Description** - Add detailed notes about the task
 - **Project** - Assign to a project (we'll create one next)
 - **Tags** - Add tags for organization
-- **Status** - Set task status (0-4) or archive
+- **Status** - Set task status
 
 **Status Levels:**
-- 0: Not started
-- 1: In planning
-- 2: In progress
-- 3: Review/blocked
-- 4: Nearly complete
-- Archive: Remove from active views but keep for reference
+- **Not Started (0)**: Default state, task hasn't been worked on yet
+- **In Progress (1)**: Task is actively being worked on
+- **Done (2)**: Task is completed
+- **Archived (3)**: Task is finished and archived for historical record
+- **Waiting (4)**: Task is blocked or waiting on something/someone
+- **Cancelled (5)**: Task was abandoned or is no longer needed
+- **Planned (6)**: Task is scheduled to be worked on
 
 ---
 
@@ -83,8 +118,10 @@ Projects group related tasks together. Perfect for anything with multiple steps.
 2. Click **"+ New Project"**
 3. Enter a name, for example: "Home Renovation"
 4. Optionally set:
-   - **State** - Idea, Planned, In Progress, On Hold, Complete, Archived
+   - **Status** - Planned, Not Started, In Progress, Waiting, Done, Cancelled
    - **Description** - Project details
+   - **Priority** - Low, Medium, or High
+   - **Due Date** - When the project should be completed
    - **Area** - Assign to an area (we'll cover this next)
    - **Tags** - Add project tags
 
@@ -176,7 +213,7 @@ Views let you create filtered, personalized task lists.
 
 ### Create a Custom View
 
-1. Go to any task list (Today, Upcoming, Someday)
+1. Go to any task list (Today, Upcoming)
 2. Apply filters (project, area, tag, status, etc.)
 3. Click **"Save View"**
 4. Name your view, for example: "Work Tasks - High Priority"
@@ -253,6 +290,39 @@ Automate repetitive tasks with sophisticated recurring patterns.
 - Complete Monday's task → Next Monday's task is automatically created
 - Due date-based: Task always created for upcoming Monday
 - Completion-based: Task created 7 days after completion
+
+---
+
+## Deferring Tasks (Defer Until)
+
+Sometimes you can't work on a task yet, but don't want to see it cluttering your views. **Defer Until** hides tasks until a specific time.
+
+### How Defer Until Works
+
+1. Open a task
+2. Set **"Defer Until"** to a future date/time
+3. Task disappears from all views until that time
+4. When defer time arrives, task automatically reappears
+
+### Defer Until vs. Due Date
+
+They serve different purposes:
+- **Defer Until** = "Don't show me this until..." (when to START thinking about it)
+- **Due Date** = "This needs to be finished by..." (deadline)
+
+A task can have both! Example:
+- Task: "Review contract"
+- Defer Until: March 15 (waiting for contract to arrive)
+- Due Date: March 20 (needs to be reviewed by this date)
+
+### When to Use Defer Until
+
+- Waiting for information or materials
+- Task that can't be started yet ("Call plumber on Monday")
+- Postponing a decision ("Remind me in 2 hours")
+- Seasonal or future tasks ("Review Q2 goals in April")
+
+**Pro Tip**: Deferred tasks appear in the Upcoming view on the day they become available, helping you plan ahead.
 
 ---
 
@@ -333,14 +403,16 @@ Speed up your workflow with keyboard shortcuts:
 
 **Detail Method:**
 1. Open task details
-2. Click **"Complete"** button
-3. Task moves to archive
+2. Change status to **"Done"** or click **"Complete"** button
+3. Task moves to Today page's Completed section (if finished today)
 
 ### Viewing Completed Tasks
 
-1. Open any view (Today, Upcoming, Someday)
+1. Open any view (Today or project detail pages)
 2. Click **"Show Completed"** toggle
 3. See completed tasks with completion dates
+
+Completed tasks are automatically shown in the Today page's Completed section if finished today.
 
 ### Archive vs. Delete
 
@@ -360,13 +432,18 @@ Invite others to collaborate on projects.
 
 1. Open a project
 2. Click the **Share** button
-3. Select a user from the dropdown
+3. Enter the email address of the user you want to share with
 4. Choose permission level:
-   - **Read only** - Can view, can't edit
-   - **Read & write** - Can view and edit
+   - **Read only (ro)** - Can view, can't edit
+   - **Read & write (rw)** - Can view and edit
 5. Click **"Share"**
 
-The user now sees this project in their projects list!
+The user receives a notification and sees this project in their projects list!
+
+**Requirements:**
+- The other user must have a tududi account
+- Must use exact email address they registered with
+- Cannot share with yourself
 
 ### Manage Shares
 
@@ -391,6 +468,19 @@ Access via user menu (top right):
 - **Preferences** - Default views, sorting, date formats
 - **Theme** - Light, dark, or system default
 - **Language** - Choose from 24 supported languages
+
+### Today Page Settings
+
+Click the settings icon (⚙️) on the Today page to customize:
+
+- **Show Overdue/Due Today** - Toggle Overdue section visibility (on by default)
+- **Show Suggestions** - Toggle Suggested section visibility (off by default)
+- **Show Completed** - Toggle Completed section visibility (on by default)
+- **Show Metrics** - Toggle task metrics widget (off by default)
+- **Show Daily Quote** - Toggle motivational quote (on by default)
+- **Show Progress Bar** - Toggle completion progress bar (on by default)
+
+Each section can also be collapsed/expanded - your preference is saved in your browser.
 
 ### Telegram Settings
 
@@ -456,11 +546,15 @@ Automate the routine to focus on the important.
 
 ### Daily Review
 ```
-1. Check "Today" view
-2. Process inbox items
+1. Check Today page sections:
+   - Overdue: Address urgent past-due tasks
+   - Planned: Work on tasks in progress
+   - Suggested: Pick next tasks to tackle
+   - Completed: Review what you accomplished
+2. Process inbox items (aim for inbox zero)
 3. Mark completed tasks as done
-4. Adjust priorities as needed
-5. Review tomorrow's tasks in "Upcoming"
+4. Adjust priorities and statuses as needed
+5. Review tomorrow's tasks in "Upcoming" (7-day view)
 ```
 
 ### Weekly Planning
@@ -500,8 +594,9 @@ Automate the routine to focus on the important.
 ## Troubleshooting
 
 ### Can't see tasks I created
-- Check you're in the right view (Today/Upcoming/Someday)
-- Tasks without due dates go to "Someday"
+- Check you're in the right view (Today/Upcoming/Projects)
+- Tasks without due dates won't appear in Today or Upcoming
+- View all tasks in the Projects view or search for them
 - Check filter settings (clear all filters)
 
 ### Tasks not appearing in "Today"
