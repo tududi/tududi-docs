@@ -60,7 +60,7 @@ curl https://your-domain.com/api/tasks \
 
 Interactive API docs are available in development.
 
-- Development: `http://localhost:3002/api`
+- Development: `http://localhost:3002/api-docs`
 - Production: disabled by default (recommended)
 
 ### Configuration
@@ -72,13 +72,14 @@ SWAGGER_ENABLED=true   # Force enable (only if necessary and protected)
 
 ### Development usage
 1. Run Tududi in development
-2. Open `http://localhost:3002/api`
-3. Explore endpoints and schemas
+2. Sign in to your Tududi account
+3. Open `http://localhost:3002/api-docs`
+4. Explore endpoints and schemas
 
 ---
 
 ## Troubleshooting
-- Can't access Swagger docs: likely disabled in production → set `SWAGGER_ENABLED=true` only behind authentication
+- Can't access Swagger docs: likely disabled in production → set `SWAGGER_ENABLED=true` only behind authentication; also ensure you are signed in and use the correct URL (`/api-docs`, not `/api`)
 - API token not working: ensure the full token (starts with `tt_`) is used in the `Authorization: Bearer` header
 
 ---
@@ -95,5 +96,5 @@ SWAGGER_ENABLED=true   # Force enable (only if necessary and protected)
 
 ## Related documentation
 - [Configuration Guide](../getting-started/configuration.md)
-- [API Reference](https://your-domain.com/api) (when Swagger is enabled)
+- [API Reference](https://your-domain.com/api-docs) (when Swagger is enabled)
 - [Environment Variables](../getting-started/configuration.md#environment-variables)
