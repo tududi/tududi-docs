@@ -380,17 +380,20 @@ The inbox is your capture system for quick ideas, especially from Telegram.
 
 ## Keyboard Shortcuts
 
-Speed up your workflow with keyboard shortcuts:
+Global shortcuts let you jump straight to creating something new, from anywhere in the app:
 
 | Shortcut | Action |
 |----------|--------|
-| `Ctrl/Cmd + N` | New task |
-| `Ctrl/Cmd + K` | Quick search |
-| `Ctrl/Cmd + /` | Show keyboard shortcuts |
+| `Alt + Shift + I` | New inbox item |
+| `Alt + Shift + T` | New task |
+| `Alt + Shift + P` | New project |
+| `Alt + Shift + N` | New note |
+| `Alt + Shift + A` | New area |
+| `Alt + Shift + G` | New tag |
 | `Escape` | Close dialog/panel |
 | `Enter` | Save when editing |
 
-> **Tip**: Press `Ctrl/Cmd + /` in the app to see all available shortcuts.
+Shortcuts are suppressed while you're typing in a text field, so they never interfere with your input. You can rebind any of them, or turn shortcuts off entirely, in **Profile → Shortcuts**.
 
 ---
 

@@ -1,5 +1,7 @@
 ---
 sidebar_position: 3
+title: Configuration
+description: Every environment variable tududi reads, plus deployment recipes for Docker, reverse proxies, and production.
 ---
 
 # Configuration
@@ -9,6 +11,8 @@ This guide covers all configuration options for tududi, from basic environment s
 ## Environment Variables
 
 tududi is configured entirely through environment variables, making it easy to deploy across different environments without code changes.
+
+Jump to a group: [Core](#core-settings) · [Networking & proxy](#networking-and-proxy) · [Security](#security-settings) · [Rate limiting](#rate-limiting) · [Email](#email-smtp) · [Feature flags](#feature-flags) · [SSO/OIDC](#sso--oidc) · [CalDAV](#caldav) · [AI/LLM](#ai--llm) · [MCP](#mcp) · [Templates](#project-templates) · [Background jobs](#background-jobs) · [Docker](#docker-runtime) · [Frontend build-time](#frontend-build-time-flags)
 
 ### Required Variables
 
@@ -65,11 +69,11 @@ These variables customize tududi's behavior:
   - **Specific domains**: Production with reverse proxy
   - **Empty string**: Development with external access (insecure)
 
-#### `PUID` / `GUID`
+#### `PUID` / `PGID`
 - **Description**: User ID and Group ID to run the container process as
 - **Required**: No
 - **Default**: 1001/1001
-- **Example**: `PUID=1000 GUID=1000`
+- **Example**: `PUID=1000 PGID=1000`
 - **When to Use**:
   - Match file permissions with your host system user
   - Running Docker as non-root user
@@ -79,6 +83,7 @@ These variables customize tududi's behavior:
   id -u  # Shows your user ID
   id -g  # Shows your group ID
   ```
+- **Notes**: `APP_UID` / `APP_GID` are accepted as fallbacks. Some older examples show `GUID` — that name is **not** read by the container entrypoint; use `PGID`.
 
 #### `DB_FILE`
 - **Description**: Path to the SQLite database file
@@ -209,7 +214,7 @@ docker run \
   -e TUDUDI_SESSION_SECRET=$(openssl rand -hex 64) \
   -e TUDUDI_ALLOWED_ORIGINS=https://tududi.yourdomain.com \
   -e PUID=1000 \
-  -e GUID=1000 \
+  -e PGID=1000 \
   -v /data/tududi/db:/app/backend/db \
   -v /data/tududi/uploads:/app/backend/uploads \
   -p 127.0.0.1:3002:3002 \
@@ -276,7 +281,7 @@ services:
       - TUDUDI_SESSION_SECRET=your-generated-secret-here
       - TUDUDI_ALLOWED_ORIGINS=https://tududi.yourdomain.com
       - PUID=1000
-      - GUID=1000
+      - PGID=1000
     volumes:
       - ./tududi_db:/app/backend/db
       - ./tududi_uploads:/app/backend/uploads
@@ -324,7 +329,7 @@ docker-compose up -d
 
 ### File Permissions
 - Ensure database and upload volumes are not world-readable
-- Use appropriate PUID/GUID for your environment
+- Use appropriate PUID/PGID for your environment
 - Restrict access to `.env` files (`chmod 600 .env`)
 
 ### Reverse Proxy
@@ -352,18 +357,188 @@ For full instructions, visit [Telegram Integration](/features/telegram-integrati
 
 ## Environment Variable Reference
 
-### Quick Reference Table
+Every variable tududi reads, grouped by area. Anything not listed here is not read by the application.
+
+### Core settings
 
 | Variable | Required | Default | Description |
 |----------|----------|---------|-------------|
-| `TUDUDI_USER_EMAIL` | Yes | - | Initial admin email |
-| `TUDUDI_USER_PASSWORD` | Yes | - | Initial admin password |
-| `TUDUDI_SESSION_SECRET` | Yes | - | Session encryption key |
-| `TUDUDI_ALLOWED_ORIGINS` | No | `localhost:*` | CORS allowed origins |
-| `PUID` | No | 1001 | Container user ID |
-| `GUID` | No | 1001 | Container group ID |
-| `DB_FILE` | No | `backend/db/production.sqlite3` | Database file path |
-| `TUDUDI_UPLOAD_PATH` | No | `backend/uploads/` | Upload directory |
+| `TUDUDI_USER_EMAIL` | Yes | — | Initial admin email, created on first startup |
+| `TUDUDI_USER_PASSWORD` | Yes | — | Initial admin password |
+| `TUDUDI_SESSION_SECRET` | Yes | random | Session cookie encryption key. A random value is generated if unset, which logs everyone out on every restart |
+| `NODE_ENV` | No | `development` | `production`, `development`, or `test`. Any other value exits at startup |
+| `DB_FILE` | No | `backend/db/{NODE_ENV}.sqlite3` | SQLite database path |
+| `TUDUDI_UPLOAD_PATH` | No | `backend/uploads/` | Upload directory for attachments and avatars |
+| `FILE_UPLOAD_LIMIT_MB` | No | `10` | Maximum request body and upload size in MB |
+| `API_VERSION` | No | `v1` | API path version. Routes are served at both `/api` and `/api/{version}` |
+| `DEBUG` | No | — | Enable verbose debug logging |
+
+### Networking and proxy
+
+| Variable | Required | Default | Description |
+|----------|----------|---------|-------------|
+| `HOST` | No | `0.0.0.0` | Bind address |
+| `PORT` | No | `3002` | Bind port |
+| `BASE_URL` | For SSO | — | Public base URL. **Required** for OIDC callbacks to resolve |
+| `FRONTEND_URL` | No | `http://localhost:8080` | Frontend URL used in generated links |
+| `BACKEND_URL` | No | `http://localhost:3002` | Backend URL used in generated links |
+| `TUDUDI_ALLOWED_ORIGINS` | No | localhost only | Comma-separated CORS allowlist |
+| `TUDUDI_TRUST_PROXY` | Behind a proxy | `false` | `true`, `false`, `1`, `loopback`, or a CIDR. **Required behind any reverse proxy** |
+| `FRONTEND_HOST` / `FRONTEND_PORT` / `FRONTEND_ORIGIN` | No | — | Webpack dev server settings (development only) |
+
+:::warning Behind nginx, Caddy, or Traefik? Set TUDUDI_TRUST_PROXY
+Without it, sessions break after login, rate limiting keys off the proxy's IP instead of the client's, and audit logs record the wrong address. The symptom is a `ValidationError` about `X-Forwarded-For` in the logs.
+:::
+
+### Security settings
+
+| Variable | Required | Default | Description |
+|----------|----------|---------|-------------|
+| `COOKIE_SECURE` | No | `auto` | `auto` detects HTTPS (respecting `X-Forwarded-Proto` when trust proxy is on), `true` always requires HTTPS, `false` allows plain HTTP |
+| `DISABLE_HSTS` | No | `false` | Disable HSTS headers. Only for running production builds locally over HTTP — never in real production |
+| `UPGRADE_INSECURE_REQUESTS` | No | disabled | Add the CSP `upgrade-insecure-requests` directive. Enabling this on a plain HTTP deployment produces a blank page |
+| `SWAGGER_ENABLED` | No | `true` | Serve the API explorer at `/api-docs`. Set `false` to disable |
+| `SECRET_KEY` | No | — | Fallback encryption key when `ENCRYPTION_KEY` is unset (see [CalDAV](#caldav)) |
+
+### Rate limiting
+
+See [API Security](/features/api-security) for the full explanation of each tier.
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `RATE_LIMITING_ENABLED` | `true` | Master switch |
+| `RATE_LIMIT_AUTH_WINDOW_MS` / `RATE_LIMIT_AUTH_MAX` | 15 min / 5 | Login and registration |
+| `RATE_LIMIT_API_WINDOW_MS` / `RATE_LIMIT_API_MAX` | 15 min / 100 | Unauthenticated API |
+| `RATE_LIMIT_AUTH_API_WINDOW_MS` / `RATE_LIMIT_AUTH_API_MAX` | 15 min / 1000 | Authenticated API |
+| `RATE_LIMIT_CREATE_WINDOW_MS` / `RATE_LIMIT_CREATE_MAX` | 15 min / 50 | Resource creation |
+| `RATE_LIMIT_API_KEY_WINDOW_MS` / `RATE_LIMIT_API_KEY_MAX` | 1 hour / 10 | API key generation |
+
+### Email (SMTP)
+
+Used for email verification and notification delivery. See [Notifications](/features/notifications).
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `ENABLE_EMAIL` | `false` | Master switch for outbound email |
+| `EMAIL_SMTP_HOST` | — | SMTP server hostname |
+| `EMAIL_SMTP_PORT` | `587` | SMTP port |
+| `EMAIL_SMTP_SECURE` | `false` | Use implicit TLS (typically `true` for port 465) |
+| `EMAIL_SMTP_USERNAME` | — | SMTP username |
+| `EMAIL_SMTP_PASSWORD` | — | SMTP password or app password |
+| `EMAIL_FROM_ADDRESS` | — | From address on outgoing mail |
+| `EMAIL_FROM_NAME` | `Tududi` | From display name |
+| `REGISTRATION_TOKEN_EXPIRY_HOURS` | `24` | Lifetime of email verification tokens |
+
+### Feature flags
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `FF_ENABLE_BACKUPS` | `false` | Enable the in-app [backup and restore](/features/backup-restore) UI |
+| `FF_ENABLE_CALDAV` | `false` | Enable [CalDAV](/features/caldav-sync). `CALDAV_ENABLED=true` is an accepted alias |
+| `FF_ENABLE_MCP` | `false` | Enable the [MCP server](/features/mcp-integration) |
+| `PROJECT_TEMPLATES_ENABLED` | `true` | Enable [project templates](/features/templates) |
+:::note FF_ENABLE_CALENDAR and FF_ENABLE_HABITS do nothing
+Both names appear in `backend/.env.example` and the Dockerfile, but no code reads them. Calendar and Habits are **per-user** toggles in **Profile → Features & Add-ons**, not server settings. See [Feature Toggles](/features/feature-toggles).
+:::
+
+### SSO / OIDC
+
+Full setup guide: [SSO / OIDC](sso-oidc.md).
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `OIDC_ENABLED` | `false` | Enable OIDC authentication |
+| `PASSWORD_AUTH_ENABLED` | `true` | Set `false` to enforce SSO-only login |
+| `OIDC_PROVIDER_NAME` | — | Display name on the login button |
+| `OIDC_PROVIDER_SLUG` | — | URL-safe identifier used in the callback URL |
+| `OIDC_ISSUER_URL` | — | Provider discovery endpoint |
+| `OIDC_CLIENT_ID` | — | OAuth client ID |
+| `OIDC_CLIENT_SECRET` | — | OAuth client secret |
+| `OIDC_SCOPE` | `openid profile email` | Space-separated scopes |
+| `OIDC_AUTO_PROVISION` | `true` | Create accounts on first SSO login |
+| `OIDC_ADMIN_EMAIL_DOMAINS` | — | Comma-separated domains granted admin at provisioning |
+
+For multiple providers use numbered variants: `OIDC_PROVIDER_1_NAME`, `OIDC_PROVIDER_1_SLUG`, `OIDC_PROVIDER_1_ISSUER`, `OIDC_PROVIDER_1_CLIENT_ID`, `OIDC_PROVIDER_1_CLIENT_SECRET`, `OIDC_PROVIDER_1_SCOPE`, `OIDC_PROVIDER_1_AUTO_PROVISION`, `OIDC_PROVIDER_1_ADMIN_EMAIL_DOMAINS` — numbering from 1 with no gaps.
+
+### CalDAV
+
+Full setup guide: [CalDAV Sync](/features/caldav-sync).
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `CALDAV_ENABLED` | `false` | Enable CalDAV (alias of `FF_ENABLE_CALDAV`) |
+| `ENCRYPTION_KEY` | falls back to `SECRET_KEY` | AES-256-GCM key for stored remote calendar passwords |
+| `CALDAV_PROJECTS_AS_CALENDARS` | `false` | Serve one calendar per project instead of one combined list |
+| `CALDAV_DEFAULT_SYNC_INTERVAL` | `15` | Minutes between automatic syncs |
+| `CALDAV_MAX_RECURRING_INSTANCES` | `365` | Future recurring instances to expand |
+| `CALDAV_CONFLICT_RESOLUTION` | `last_write_wins` | `last_write_wins`, `local_wins`, `remote_wins`, or `manual` |
+| `CALDAV_RATE_LIMIT` | `60` | CalDAV requests per minute per IP |
+| `CALDAV_MAX_SYNC_TASKS` | `1000` | Maximum tasks per sync operation |
+| `CALDAV_REQUEST_TIMEOUT` | `30000` | Request timeout in milliseconds |
+| `CALDAV_LOG_LEVEL` | `info` | `error`, `warn`, `info`, or `debug` |
+| `CALDAV_LOG_REQUESTS` | `false` | Log every CalDAV HTTP request |
+
+:::warning Set ENCRYPTION_KEY before adding remote calendars
+If `ENCRYPTION_KEY` is unset, tududi falls back to `SECRET_KEY`. If neither is set, saving a remote calendar password fails outright. Changing the value later makes existing stored passwords undecryptable.
+:::
+
+### AI / LLM
+
+Full setup guide: [AI Assistant](/features/ai-assistant). All AI features are off unless a key is set.
+
+| Variable | Fallback | Default | Description |
+|----------|----------|---------|-------------|
+| `LLM_API_KEY` | `OPENAI_API_KEY` | — | API key for an OpenAI-compatible provider |
+| `LLM_BASE_URL` | `OPENAI_BASE_URL` | OpenAI | Provider endpoint. Point at Ollama or LM Studio to keep data local |
+| `LLM_MODEL` | `TUDUDI_AI_MODEL` | `gpt-4o-mini` | Model name the provider expects |
+
+### MCP
+
+Full setup guide: [MCP Integration](/features/mcp-integration).
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `FF_ENABLE_MCP` | `false` | Enable the MCP server |
+| `MCP_SERVER_NAME` | `tududi` | Server name reported to MCP clients |
+| `MCP_SERVER_VERSION` | — | Server version reported to MCP clients |
+| `TUDUDI_API_TOKEN` | — | API token used by the stdio MCP client config |
+
+### Project templates
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `PROJECT_TEMPLATES_ENABLED` | `true` | Enable project templates |
+| `MAX_TEMPLATES_PER_USER` | `50` | Per-user template limit |
+| `MARKETPLACE_URL` | — | Remote template marketplace URL |
+| `MARKETPLACE_API_KEY` | — | Marketplace API token |
+
+### Background jobs
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `DISABLE_SCHEDULER` | `false` | Disable all cron jobs: deferred tasks, due reminders, task summaries, token cleanup |
+| `DISABLE_TELEGRAM` | `false` | Disable Telegram bot polling for all users |
+
+### Docker runtime
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `PUID` | `1001` | UID to run the process as (`APP_UID` is a fallback) |
+| `PGID` | `1001` | GID to run the process as (`APP_GID` is a fallback) |
+
+Volumes: `/app/backend/db` and `/app/backend/uploads`. The healthcheck hits `/api/health`.
+
+### Frontend build-time flags
+
+:::warning These are baked into the build, not read at container startup
+Unlike every other variable on this page, these three are compiled into the frontend JavaScript bundle at **build time** by webpack. Setting them on the official `chrisvel/tududi` Docker image at container startup has **no effect** — the bundle is already built. They only matter if you build the frontend yourself (`npm run frontend:build`) with the variable set in that environment.
+:::
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `TUDUDI_BASE_PATH` | `''` (root) | Serve the app under a URL sub-path, e.g. `/tududi`. Auto-detected for Home Assistant Ingress at runtime even without this set |
+| `ENABLE_NOTE_COLOR` | `true` | Show the per-note color picker |
+| `ENABLE_INBOX_CLARIFY` | `false` | Show the inbox clarify overlay |
 
 ---
 
@@ -397,13 +572,13 @@ TUDUDI_ALLOWED_ORIGINS=https://tududi.com:8443
 
 **Problem**: Database or uploads not accessible
 
-**Solution**: Set correct PUID/GUID:
+**Solution**: Set correct PUID/PGID:
 ```bash
 # On host, check ownership of volume directories
 ls -ln ~/tududi_db
 
-# Set matching PUID/GUID in Docker run command
--e PUID=1000 -e GUID=1000
+# Set matching PUID/PGID in Docker run command
+-e PUID=1000 -e PGID=1000
 ```
 
 ### Can't Access on Network

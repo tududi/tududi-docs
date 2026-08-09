@@ -53,19 +53,28 @@ Run tududi on your own infrastructure with a single Docker command. No monthly f
 ### Quick Capture & Notes
 - **Inbox** - Process ideas captured from Telegram into actionable items
 - **Notes** - Create project documentation or standalone notes
-- **Markdown Support** - Rich text formatting for detailed documentation
+- **Markdown Editor** - Slash commands, wikilinks, and backlinks between notes
 
-### Telegram Integration
-- **Create Tasks via Messages** - Send a message, create a task
-- **Daily Summaries** - Automatic task digest notifications
-- **Always Available** - Your task manager in your pocket
+### Planning & Review
+- **Goals** - Set seasonal and yearly outcomes and link them to areas
+- **Habits** - Track streaks with flexible or strict scheduling
+- **Boards** - Eisenhower matrix and Kanban views of your tasks
+- **Calendar** - Day, week, and month scheduling views
+- **Reports & Insights** - GTD review reports and productivity metrics
+
+### Integrations
+- **Telegram** - Send a message, create an inbox item; get daily digests
+- **CalDAV** - Sync with Apple Reminders, Thunderbird, Nextcloud, and more
+- **MCP** - Let AI assistants read and manage your tasks
+- **OIDC / SSO** - Sign in with your identity provider
+- **REST API** - Personal API tokens with an OpenAPI spec
 
 ### Modern Experience
 - **Responsive Design** - Works beautifully on desktop, tablet, and mobile
+- **Installable App** - PWA with offline support
 - **Dark Mode** - Easy on the eyes with automatic theme detection
-- **24 Languages** - Full internationalization support
-- **Calendar View** - Visual task scheduling
-- **Productivity Metrics** - Track your progress and patterns
+- **25 Languages** - Full internationalization support
+- **Notifications** - In-app, email, and Telegram delivery per event type
 
 ## Technology Stack
 
@@ -150,7 +159,7 @@ tududi is built on the principle that your task management system should work fo
 
 ## Project Status
 
-tududi is actively developed and approaching version 1.0. The current release (v0.85-beta.1) is stable for production use with comprehensive features and ongoing improvements.
+tududi is actively developed and stable for production use. The current release is **v1.4.0-rc.1**.
 
 **License:** MIT
 **Repository:** https://github.com/chrisvel/tududi
