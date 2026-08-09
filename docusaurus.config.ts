@@ -59,8 +59,7 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
-    image: 'img/tududi-social-card.jpg',
+    image: 'img/wide-logo-light.png',
     navbar: {
       logo: {
         alt: 'tududi',

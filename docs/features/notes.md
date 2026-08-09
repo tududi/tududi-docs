@@ -589,34 +589,38 @@ luminance = (0.299 * R + 0.587 * G + 0.114 * B) / 255
 ```
 
 ---
+## Editor Shortcuts
+
+The note editor is more than a plain textarea — it supports slash commands, note-to-note links, and a formatting toolbar.
+
+### Slash commands
+
+Type `/` at the start of a line to open a command menu for inserting formatting: headings (H1–H3), bold, italic, strikethrough, inline code, code block, quote, to-do, bulleted and numbered lists, a divider, a link, a note link, and callout blocks (Note, Tip, Warning, Important, Danger).
+
+### Linking to other notes
+
+Type `[[` to open a note picker — start typing a title to filter, then select a note to insert a link to it. Linked notes show up as clickable links when the note is rendered.
+
+### Backlinks
+
+Every note has a **Backlinks** panel showing which other notes link to it via `[[wikilinks]]` — a quick way to see what else references the note you're reading.
+
+### Formatting toolbar
+
+A toolbar above the editor offers the same formatting actions as the slash menu, for when you'd rather click than type a command.
+
+---
 ## Keyboard Shortcuts
 
-### Global (anywhere in app)
+`Alt + Shift + N` creates a new note from anywhere in the app (rebindable in **Profile → Shortcuts** — see [First Steps](/getting-started/first-steps#keyboard-shortcuts)).
 
-| Shortcut | Action |
-|----------|--------|
-| `g` then `n` | Go to Notes page |
-
-### On Notes page
-
-| Shortcut | Action |
-|----------|--------|
-| `n` | Create new note |
-| Click note | Open in preview mode |
-
-### In edit mode
+Within a note:
 
 | Shortcut | Action |
 |----------|--------|
 | `Esc` | Save and exit edit mode (if title exists) |
 | `Tab` | Navigate between fields |
-
-### In focus mode
-
-| Shortcut | Action |
-|----------|--------|
-| `Esc` | Exit focus mode |
-| Click X | Close focus mode |
+| `Esc` (in focus mode) | Exit focus mode |
 
 ---
 ## Common Workflows

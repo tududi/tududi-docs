@@ -398,7 +398,7 @@ sidebar_position: 4
 ├── i18n.ts             # i18next configuration
 │                       # - Language detection
 │                       # - Resource loading
-│                       # - 24 language support
+│                       # - 25 language support
 │
 ├── styles/             # Global styles
 │   ├── globals.css

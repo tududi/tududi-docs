@@ -14,7 +14,7 @@ sidebar_position: 1
 - **Styling:** Tailwind CSS 3.4.13 + Heroicons
 - **State Management:** Zustand 5.0.3 (global state), SWR 2.2.5 (server state)
 - **Routing:** React Router DOM 6.26.2
-- **Internationalization:** i18next + react-i18next (24 languages)
+- **Internationalization:** i18next + react-i18next (25 languages)
 - **Charts/Analytics:** Recharts 2.15.4
 - **Drag & Drop:** @dnd-kit (sortable tasks)
 - **Development:** webpack-dev-server with proxy configuration
@@ -215,7 +215,7 @@ router.get('/task/:id',
 
 ## Core Modules Overview
 
-### Backend Modules (19 total)
+### Backend Modules (28 total)
 
 Located in `/backend/modules/`, each follows consistent architecture:
 
@@ -224,22 +224,31 @@ Located in `/backend/modules/`, each follows consistent architecture:
 | **tasks** | Task management, subtasks, recurring | High - most complex module |
 | **projects** | Project CRUD and organization | Medium |
 | **areas** | Area categorization | Low |
+| **goals** | Seasonal and yearly goals | Low |
 | **notes** | Note-taking system | Medium |
 | **tags** | Tagging system | Low |
-| **users** | User management | Medium |
+| **users** | User management, profile, API keys | Medium |
 | **auth** | Authentication (login/register) | Medium |
+| **oidc** | OIDC / SSO providers and identity linking | High |
+| **oauth** | OAuth protected-resource metadata (RFC 9728) | Low |
 | **shares** | Project sharing & permissions | High |
 | **telegram** | Telegram bot integration | Medium |
 | **inbox** | Quick capture inbox | Low |
 | **habits** | Habit tracking | Medium |
-| **notifications** | In-app notifications | Medium |
+| **people** | Contacts and task assignment | Low |
+| **templates** | Project templates and marketplace | Medium |
+| **notifications** | Notification delivery across channels | Medium |
 | **search** | Universal search | Medium |
 | **views** | Saved custom views | Low |
+| **reports** | GTD review reports | Low |
+| **ai-assistant** | Daily brief, task and project insights | Medium |
+| **mcp** | Model Context Protocol server | High |
+| **caldav** | CalDAV server and two-way sync | High |
 | **admin** | Admin operations | Low |
 | **backup** | Backup/restore functionality | High |
 | **feature-flags** | Feature flag management | Low |
 | **quotes** | Daily quotes | Low |
-| **url** | URL handling | Low |
+| **url** | URL title extraction and link previews | Low |
 
 ---
 

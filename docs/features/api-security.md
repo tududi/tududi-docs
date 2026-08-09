@@ -1,17 +1,17 @@
 ---
 sidebar_position: 3
+title: API Access & Security
+description: Personal API tokens, rate limiting tiers, and Swagger documentation control.
 ---
 
-# API Security & Rate Limiting
+# API Access & Security
 
-Tududi includes comprehensive API security features to protect your instance from abuse, brute force attacks, and unauthorized access.
+tududi exposes a full REST API alongside the web interface, secured with personal API tokens, tiered rate limiting, and optional interactive documentation.
 
 ## Overview
 
-The API security system provides:
-
+- **API Token Authentication**: Secure, cookie-less programmatic access
 - **Rate Limiting**: Prevents abuse and brute force attacks
-- **API Token Authentication**: Secure programmatic access
 - **Swagger Documentation Control**: Protect API internals in production
 - **Environment-based Configuration**: Different security levels for dev/production
 

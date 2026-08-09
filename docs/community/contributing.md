@@ -48,7 +48,7 @@ Thank you for your interest in contributing to tududi!
 - ✨ [Request features](/community/feature-requests)
 - 💻 Submit code fixes or new features
 - 📝 Improve documentation
-- 🌍 Add translations (24 languages supported)
+- 🌍 Add translations (25 languages supported)
 
 ## Code Guidelines
 

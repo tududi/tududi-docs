@@ -38,7 +38,7 @@ no new instance is created for the next week.
 New task instance should appear for next Monday
 
 ## Environment
-- tududi version: v0.85-beta.1
+- tududi version: v1.4.0
 - Deployment: Docker
 - OS: Ubuntu 22.04
 - Browser: Chrome 120
