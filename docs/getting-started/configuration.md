@@ -137,8 +137,8 @@ docker run \
   -e TUDUDI_USER_EMAIL=admin@example.com \
   -e TUDUDI_USER_PASSWORD=securepassword \
   -e TUDUDI_SESSION_SECRET=$(openssl rand -hex 64) \
-  -v ~/tududi_db:/app/backend/db \
-  -v ~/tududi_uploads:/app/backend/uploads \
+  -v ~/tududi_db:/app/db \
+  -v ~/tududi_uploads:/app/uploads \
   -p 3002:3002 \
   -d chrisvel/tududi:latest
 ```
@@ -162,8 +162,8 @@ docker run \
   -e TUDUDI_USER_PASSWORD=your-secure-password \
   -e TUDUDI_SESSION_SECRET=$(openssl rand -hex 64) \
   -e TUDUDI_ALLOWED_ORIGINS=https://tududi.yourdomain.com \
-  -v /data/tududi/db:/app/backend/db \
-  -v /data/tududi/uploads:/app/backend/uploads \
+  -v /data/tududi/db:/app/db \
+  -v /data/tududi/uploads:/app/uploads \
   -p 127.0.0.1:3002:3002 \
   -d chrisvel/tududi:latest
 ```
@@ -215,8 +215,8 @@ docker run \
   -e TUDUDI_ALLOWED_ORIGINS=https://tududi.yourdomain.com \
   -e PUID=1000 \
   -e PGID=1000 \
-  -v /data/tududi/db:/app/backend/db \
-  -v /data/tududi/uploads:/app/backend/uploads \
+  -v /data/tududi/db:/app/db \
+  -v /data/tududi/uploads:/app/uploads \
   -p 127.0.0.1:3002:3002 \
   -d chrisvel/tududi:latest
 ```
@@ -241,7 +241,7 @@ docker run \
   -e TUDUDI_USER_PASSWORD=password \
   -e TUDUDI_SESSION_SECRET=$(openssl rand -hex 64) \
   -v /mnt/database:/custom/path \
-  -v ~/tududi_uploads:/app/backend/uploads \
+  -v ~/tududi_uploads:/app/uploads \
   -p 3002:3002 \
   -d chrisvel/tududi:latest
 ```
@@ -256,7 +256,7 @@ docker run \
   -e TUDUDI_USER_EMAIL=admin@example.com \
   -e TUDUDI_USER_PASSWORD=password \
   -e TUDUDI_SESSION_SECRET=$(openssl rand -hex 64) \
-  -v ~/tududi_db:/app/backend/db \
+  -v ~/tududi_db:/app/db \
   -v /mnt/storage:/custom/uploads \
   -p 3002:3002 \
   -d chrisvel/tududi:latest
@@ -283,8 +283,8 @@ services:
       - PUID=1000
       - PGID=1000
     volumes:
-      - ./tududi_db:/app/backend/db
-      - ./tududi_uploads:/app/backend/uploads
+      - ./tududi_db:/app/db
+      - ./tududi_uploads:/app/uploads
     ports:
       - "127.0.0.1:3002:3002"
 ```
@@ -526,7 +526,7 @@ Full setup guide: [MCP Integration](/features/mcp-integration).
 | `PUID` | `1001` | UID to run the process as (`APP_UID` is a fallback) |
 | `PGID` | `1001` | GID to run the process as (`APP_GID` is a fallback) |
 
-Volumes: `/app/backend/db` and `/app/backend/uploads`. The healthcheck hits `/api/health`.
+Volumes: `/app/db` and `/app/uploads`. The healthcheck hits `/api/health`.
 
 ### Frontend build-time flags
 
