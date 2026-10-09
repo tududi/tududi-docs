@@ -256,9 +256,9 @@ Tududi includes interactive API documentation via Swagger UI.
 
 ### Accessing Documentation
 
-**Development**: `http://localhost:3002/api`
+Swagger UI is served at `/api-docs` (for example `http://localhost:3002/api-docs` in development, or `https://your-domain.com/api-docs`). The underlying OpenAPI document is at `/api-docs/swagger.json`. You must be logged in to open either one.
 
-**Production**: Disabled by default (recommended)
+**Docker image**: Disabled by default (recommended)
 
 ### Security Considerations
 
@@ -277,10 +277,10 @@ API documentation reveals:
 
 #### Default Behavior
 
-```javascript
-// Enabled in development, disabled in production
-SWAGGER_ENABLED=false  // Force disable
-SWAGGER_ENABLED=true   // Force enable
+```bash
+# Enabled unless explicitly turned off
+SWAGGER_ENABLED=false  # Disable
+SWAGGER_ENABLED=true   # Enable (the Docker image ships with it off)
 ```
 
 #### Docker Configuration
@@ -294,7 +294,7 @@ ENV SWAGGER_ENABLED=false
 #### Access Control
 
 When disabled:
-- `/api` returns HTTP 404
+- `/api-docs` returns HTTP 404
 - Swagger routes are not registered
 - No documentation is served
 
@@ -306,7 +306,7 @@ When enabled:
 ### Development Usage
 
 1. Start tududi in development mode
-2. Navigate to `http://localhost:3002/api`
+2. Navigate to `http://localhost:3002/api-docs`
 3. Explore available endpoints
 4. Test API calls directly from the browser
 
@@ -398,5 +398,5 @@ Before deploying to production:
 ## Related Documentation
 
 - [Configuration Guide](../getting-started/configuration.md)
-- [API Reference](https://your-domain.com/api) (when Swagger enabled)
+- [API Reference](https://your-domain.com/api-docs) (when Swagger enabled)
 - [Environment Variables](../getting-started/configuration.md#environment-variables)
